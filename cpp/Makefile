@@ -2,17 +2,15 @@
 # Author Caizhili
 # A simple c++ makefile template
 
-CC = g++
-CPPFLAGS = -std=c++11 -Wall -g3 -fPIC
-LDFLAGS = -lboost_system -lboost_thread -lboost_serialization
-COMPILE.cc := $(CC) $(CPPFLAGS) $(LDFLAGS)
+TARGET = #amsvr
+CC = #g++
+CPPFLAGS = #-std=c++11 -Wall -g3 -fPIC
+LDFLAGS = #-lboost_system -lboost_thread -lboost_serialization
+SRC_DIRS = #. ./common/ext/test/
+INC_DIRS = #. ./common/ext/test/
 
-TARGET = amsvr
-
-SRC_DIRS = . ./common/ext/test/
-INC_DIRS = . ./common/ext/test/
 INCFLAGS := $(addprefix -I,$(INC_DIRS))
-COMPILE.cc += $(INCFLAGS)
+COMPILE.cc := $(CC) $(CPPFLAGS) $(LDFLAGS) $(INCFLAGS)
 
 ABS_SRCDIRS := $(abspath $(SRC_DIRS))
 ABS_INCDIRS := $(abspath $(INC_DIRS))
