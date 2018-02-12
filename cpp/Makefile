@@ -1,11 +1,16 @@
 # Version 1.0
 # Author Caizhili
 # A simple c++ makefile template
+#
+# Version 2.0
+# Author Caizhili
+# Add suffix SRCSUFFIXS. Example ".cpp", ".cc".
 
 TARGET = #amsvr
 CC = #g++
 CPPFLAGS = #-std=c++11 -Wall -g3 -fPIC
 LDFLAGS = #-lboost_system -lboost_thread -lboost_serialization
+SRCSUFFIXS = #.cpp .cc
 SRC_DIRS = #. ./common/ext/test/
 INC_DIRS = #. ./common/ext/test/
 
@@ -15,7 +20,7 @@ COMPILE.cc := $(CC) $(CPPFLAGS) $(LDFLAGS) $(INCFLAGS)
 ABS_SRCDIRS := $(abspath $(SRC_DIRS))
 ABS_INCDIRS := $(abspath $(INC_DIRS))
 
-SRCS := $(foreach v,$(ABS_SRCDIRS),$(wildcard $(v)/*.cpp))
+SRCS := $(foreach v,$(ABS_SRCDIRS),$(wildcard $(addprefix $(v)/*,$(SRCSUFFIXS))))
 OBJS := $(SRCS:.cpp=.o)
 DEPS := $(SRCS:.cpp=.d)
 
