@@ -1,3 +1,7 @@
+# Version 1.0
+# Author Caizhili
+# A simple c++ makefile template
+
 CC = g++
 CPPFLAGS = -std=c++11 -Wall -g3 -fPIC
 LDFLAGS = -lboost_system -lboost_thread -lboost_serialization

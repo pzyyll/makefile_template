@@ -1,11 +1,11 @@
-# C++ Makefile template
+# Simple C++ Makefile template
 
 # Example
 
 File Tree:
 
 ```
-
+root
 ├── am_malloc.cpp
 ├── am_malloc.h
 ├── am_memory.h
@@ -27,5 +27,13 @@ File Tree:
 
 ```
 
-Modify:
+# Modify:
+
+LDFLAGS : 链接库, `-Llibdir -llibxx`
+
+TARGET : 目标名
+
+SRC_DIRS : 源文件所在目录
+
+INC_DIRS : include 目录
 
