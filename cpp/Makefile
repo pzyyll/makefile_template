@@ -10,12 +10,14 @@ TARGET     = #amsvr
 CC         = #g++
 CPPFLAGS   = #-std=c++11 -Wall -g3 -fPIC
 LDFLAGS    = #-lboost_system -lboost_thread -lboost_serialization
+LDPATH     = #/usr/local/lib64/
 SRC_SUFFIX = #.cpp
 SRC_DIRS   = #. ./common/ext/test/
 INC_DIRS   = #. ./common/ext/test/
 
+LIB_PATH   := $(addprefix -L,$(LDPATH))
 INCFLAGS   := $(addprefix -I,$(INC_DIRS))
-COMPILE.cc := $(CC) $(CPPFLAGS) $(LDFLAGS) $(INCFLAGS)
+COMPILE.cc := $(CC) $(CPPFLAGS) $(LIB_PATH) $(INCFLAGS)
 
 ABS_SRCDIRS := $(abspath $(SRC_DIRS))
 ABS_INCDIRS := $(abspath $(INC_DIRS))
@@ -31,12 +33,12 @@ all : $(TARGET)
 .PHONY : $(TARGET)
 $(TARGET) : $(OBJS)
 	@echo "Build target "$@
-	@$(COMPILE.cc) $^ -o $@
+	@$(COMPILE.cc) $^ -o $@ $(LDFLAGS)
 
 PAT_WILDCARD = $(addprefix %,$(SRC_SUFFIX))
 %.o : $(PAT_WILDCARD) %.d
 	@echo "Compliling $@"
-	@$(COMPILE.cc) -c $< -o $@
+	@$(COMPILE.cc) -c $< -o $@ $(LDFLAGS)
 
 ## DEPS
 %.d : $(PAT_WILDCARD)
