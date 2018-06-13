@@ -33,12 +33,12 @@ all : $(TARGET)
 .PHONY : $(TARGET)
 $(TARGET) : $(OBJS)
 	@echo "Build target "$@
-	@$(COMPILE.cc) $^ -o $@ $(LDFLAGS)
+	@$(COMPILE.cc) $^ $(LDFLAGS) -o $@ 
 
 PAT_WILDCARD = $(addprefix %,$(SRC_SUFFIX))
 %.o : $(PAT_WILDCARD) %.d
 	@echo "Compliling $@"
-	@$(COMPILE.cc) -c $< -o $@ $(LDFLAGS)
+	@$(COMPILE.cc) -c $< $(LDFLAGS) -o $@ 
 
 ## DEPS
 %.d : $(PAT_WILDCARD)
